@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+  <head>
+    <title><%= appName %> - Register</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <h1><%= appName %></h1>
+
+    <nav>
+      <a href="/">Home</a>
+      <a href="/about">About</a>
+      <a href="/workout/add">Add Workout</a>
+      <a href="/workout/search">Search Workouts</a>
+      <a href="/auth/login">Login</a>
+    </nav>
+
+    <h2>Register</h2>
+
+    <form method="POST" action="/auth/registered">
+      <p>
+        Username:
+        <input type="text" name="username" required />
+      </p>
+      <p>
+        First name:
+        <input type="text" name="first_name" required />
+      </p>
+      <p>
+        Last name:
+        <input type="text" name="last_name" required />
+      </p>
+      <p>
+        Email:
+        <input type="email" name="email" required />
+      </p>
+      <p>
+        Password:
+        <input type="password" name="password" required />
+      </p>
+      <p>
+        <input type="submit" value="Register" />
+      </p>
+    </form>
+  </body>
+</html>

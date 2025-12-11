@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+  <head>
+    <title><%= appName %> - Search Workouts</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <h1><%= appName %></h1>
+
+    <nav>
+      <a href="/">Home</a>
+      <a href="/about">About</a>
+      <a href="/workout/add">Add Workout</a>
+      <a href="/workout/search">Search Workouts</a>
+      <% if (session && session.userId) { %>
+        <span>Logged in as <%= session.username %></span>
+        <a href="/auth/logout">Logout</a>
+      <% } else { %>
+        <a href="/auth/login">Login</a>
+        <a href="/auth/register">Register</a>
+      <% } %>
+    </nav>
+
+    <h2>Search Workouts</h2>
+
+    <form method="GET" action="/workout/search">
+      <p>
+        Search text:
+        <input type="text" name="q" value="<%= q %>" />
+        <input type="submit" value="Search" />
+      </p>
+    </form>
+
+    <% if (q && workouts.length === 0) { %>
+      <p>No workouts found for "<%= q %>".</p>
+    <% } %>
+
+    <% if (workouts.length > 0) { %>
+      <table>
+        <tr>
+          <th>Date</th>
+          <th>Activity</th>
+          <th>Duration</th>
+          <th>Notes</th>
+        </tr>
+        <% workouts.forEach(function (w) { %>
+          <tr>
+            <td><%= w.workout_date.toISOString().slice(0, 10) %></td>
+            <td><%= w.activity %></td>
+            <td><%= w.duration_minutes %> mins</td>
+            <td><%= w.notes %></td>
+          </tr>
+        <% }); %>
+      </table>
+    <% } %>
+  </body>
+</html>

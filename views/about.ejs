@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+  <head>
+    <title><%= appName %></title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1><%= appName %></h1>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/about">About</a>
+        <a href="/workout/add">Add Workout</a>
+        <a href="/workout/search">Search Workouts</a>
+        <% if (session && session.userId) { %>
+          <a href="/auth/logout">Logout</a>
+        <% } else { %>
+          <a href="/auth/login">Login</a>
+          <a href="/auth/register">Register</a>
+        <% } %>
+      </nav>
+    </header>
+
+    <main>
+      <h2>About</h2>
+      <p>Track your workouts, see your progress, and search your training history visit links to test.</p>
+    </main>
+
+    <footer>
+      <p>by usayd hossenbaccus lab 10 <%= appName %></p>
+    </footer>
+  </body>
+</html>

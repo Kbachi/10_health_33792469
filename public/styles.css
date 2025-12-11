@@ -1,0 +1,48 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+}
+
+nav a {
+  margin-right: 10px;
+  text-decoration: none;
+  padding: 5px 10px;
+  background: #eef;
+  border-radius: 4px;
+}
+
+h1 {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 15px;
+}
+
+table, th, td {
+  border: 1px solid #888;
+}
+
+th, td {
+  padding: 8px;
+  text-align: left;
+}
+
+input, textarea {
+  padding: 6px;
+  width: 250px;
+}
+
+button {
+  padding: 6px 12px;
+  background: #28a745;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  display: block;
+  margin: 10px auto;
+}

@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+  <head>
+    <title><%= appName %> - Home</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <h1><%= appName %></h1>
+
+    <nav>
+      <a href="/">Home</a>
+      <a href="/about">About</a>
+      <a href="/workout/add">Add Workout</a>
+      <a href="/workout/search">Search Workouts</a>
+      <% if (session && session.userId) { %>
+        <span>Logged in as <%= session.username %></span>
+        <a href="/auth/logout">Logout</a>
+      <% } else { %>
+        <a href="/auth/login">Login</a>
+        <a href="/auth/register">Register</a>
+      <% } %>
+    </nav>
+
+    <div>
+      <h2>Home Page</h2>
+      <p>This is a web app which is hosted on the Goldsmiths VM.<br>
+      It allows users to track their health and fitness activities by adding and searching for workouts.<br>
+      The pages are locked behind a login system and the workout data is stored in a database.
+      </p>
+    </div>
+    </body>
+    </html>
