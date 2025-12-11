@@ -3,10 +3,12 @@ const bcrypt = require('bcrypt');
 
 const router = express.Router();
 
+const basePath = process.env.HEALTH_BASE_PATH || '';
+
 // I use this helper to protect routes login
 const redirectLogin = (req, res, next) => {
   if (!req.session.userId) {
-    return res.redirect('/auth/login');
+    return res.redirect(basePath + '/auth/login');
   }
   next();
 };
@@ -79,7 +81,7 @@ router.post('/loggedin', (req, res, next) => {
     if (results.length === 0) {
       return res.render('login.ejs', {
         appName: 'Health & Fitness Tracker',
-        error: 'Login failed. I need to check my username and password.'
+        error: 'Login failed. Check S username and password.'
       });
     }
 
@@ -93,7 +95,7 @@ router.post('/loggedin', (req, res, next) => {
       if (!match) {
         return res.render('login.ejs', {
           appName: 'Health & Fitness Tracker',
-          error: 'Login failed. I need to check my username and password.'
+          error: 'Login failed. Check username and password.'
         });
       }
 
@@ -101,7 +103,9 @@ router.post('/loggedin', (req, res, next) => {
       req.session.userId = user.id;
       req.session.username = user.username;
 
-      res.redirect('/');
+
+      // res.redirect('/');
+      res.redirect(basePath + '/');
     });
   });
 });
@@ -110,9 +114,12 @@ router.post('/loggedin', (req, res, next) => {
 router.get('/logout', redirectLogin, (req, res) => {
   req.session.destroy((err) => {
     if (err) {
-      return res.redirect('/');
+
+      // return res.redirect('/');
+      return res.redirect(basePath + '/');
     }
-    res.send("I am now logged out. <a href='/'>Go to home</a>");
+    // res.send("I am now logged out. <a href='/'>Go to home</a>");
+    return res.redirect(basePath + '/');
   });
 });
 

@@ -1,10 +1,14 @@
 const express = require('express');
 const router = express.Router();
 
-// I reuse the same pattern as redirectLogin in auth.js
+const basePath = process.env.HEALTH_BASE_PATH || '';
+
+// Protect routes
 const redirectLogin = (req, res, next) => {
   if (!req.session.userId) {
-    return res.redirect('/auth/login');
+
+    // return res.redirect('/auth/login');
+    return res.redirect(basePath + '/auth/login');
   }
   next();
 };
@@ -33,8 +37,8 @@ router.post('/added', redirectLogin, (req, res, next) => {
       return next(err);
     }
 
-    // Redirect to homepage WITH a query string
-    res.redirect('/?added=1');
+ res.redirect('/?added=1');
+    res.redirect(basePath + '/?added=1');
   });
 });
 

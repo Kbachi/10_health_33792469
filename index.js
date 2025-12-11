@@ -22,7 +22,7 @@ app.use(express.urlencoded({ extended: true }));
 // sessions
 app.use(
   session({
-    secret: 'somerandomstuff',
+    secret: 'somerandomblah',
     resave: false,
     saveUninitialized: false,
     cookie: { expires: 600000 }
